@@ -1,5 +1,4 @@
-# Projeto NodeJS boilerplate
-
-## Descrição
-
-Projeto base em NodeJS
+Grupo 2 - 2TDS2
+Matheus Couto
+Bruno Rodrigues
+Rayssa Lagem
