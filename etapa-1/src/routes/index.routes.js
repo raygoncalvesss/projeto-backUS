@@ -2,6 +2,7 @@ import { Router } from "express";
 
 // Lista de importação das rotas do projeto
 import usuariosRoutes from "./usuarios.routes.js";
+import chatRoutes from "../models/users/Chat.js";
 
 const routes = Router();
 
@@ -12,5 +13,6 @@ routes.get("/", (req, res) => {
 
 // Lista de uso das rotas do projeto
 routes.use("/usuarios", usuariosRoutes);
+routes.use("/chat", chatRoutes);
 
 export default routes;
