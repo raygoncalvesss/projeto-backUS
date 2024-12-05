@@ -33,24 +33,24 @@ cadastroRoutes.get("/listar", (req, res) => {
 });
 
 // Atualizar cadastro
-cadastroRoutes.put("/atualizar/:id", (req, res) => {
-  const { id } = req.params;
-  const { grupo, nome, apelido, estaVivo, senha } = req.body;
+cadastroRoutes.put("/atualizar/:nome", (req, res) => {
+  const { nome } = req.params;
+  const { grupo, novoNome, apelido, estaVivo, senha } = req.body;
 
-  const cadastroIndex = cadastros.findIndex(cadastro => cadastro.id === parseInt(id));
+  const cadastroIndex = cadastros.findIndex(cadastro => cadastro.nome === nome);
 
   if (cadastroIndex === -1) {
     return res.status(404).json({ message: "Cadastro não encontrado." });
   }
 
-  if (!grupo || !nome || !apelido || estaVivo === undefined || !senha) {
-    return res.status(400).json({ message: "Todos os campos (grupo, nome, apelido, estaVivo e senha) são obrigatórios." });
+  if (!grupo || !novoNome || !apelido || estaVivo === undefined || !senha) {
+    return res.status(400).json({ message: "Todos os campos (grupo, novoNome, apelido, estaVivo e senha) são obrigatórios." });
   }
 
   cadastros[cadastroIndex] = {
-    id: parseInt(id),
+    id: cadastros[cadastroIndex].id,
     grupo,
-    nome,
+    nome: novoNome,
     apelido,
     estaVivo: estaVivo === "true",
     senha,
